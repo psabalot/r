@@ -33,10 +33,16 @@ for(i in 2:1000)
 
 # et afficher
 library(ggplot2)
-ggplot(data = data.frame(id=1:1000, min=resMin, max=resMax, moy=resMoy)) +
+ggplot(data = data.frame(id=1:1000, min=resMin, max=resMax, moy=resMoy, ratio=resMin/resMax)) +
   aes(x=id) +
   geom_line(aes(y=moy), color="black", ) +
   geom_line(aes(y=max), color="red") + 
   geom_line(aes(y=min), color="blue") +
   xlab("Nombre de dimensions") + 
   ylab("Distance à l'origine")
+
+ggplot(data = data.frame(id=1:1000, ratio=resMin/resMax)) +
+  aes(x=id) +
+  geom_line(aes(y=ratio), color="purple")+
+  xlab("Nombre de dimensions") + 
+  ylab("Ratio distance la plus proche / distance la plus éloignée")
